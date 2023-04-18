@@ -1,0 +1,39 @@
+.items {
+    list-style-type: none;
+    padding: 0;
+}
+.items li {
+    cursor: pointer;
+    background-color: #EEE;
+    margin: 10px 0;
+    padding: 6px;
+    border-radius: 4px;
+}
+.items li.selected {
+    background-color: rgb(143, 187, 130);
+    color: white;
+}
+.items li.selected:hover {
+    background-color: #6a6;
+}
+.items li.finished {
+    text-decoration: line-through;
+}
+button{
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    background-color: #6a6;
+    padding: 6px;
+}
+.details{
+    background-color: #6a6;
+    padding: 6px;
+    border-radius: 4px;
+    margin: 10px 0;
+    color: white;
+}
+label{
+    padding: 6px 0;
+}

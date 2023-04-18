@@ -1,0 +1,46 @@
+<h3>Список задач:</h3>
+<ul class="items">
+    <li *ngFor="let item of dealsList" (click)="onSelect(item)" [class.selected]="item === selectedItem" [ngClass]="{finished:item.isComlete}" >
+        {{ item.title }}. {{ item.startDate | date:'d MMM yyyy':'UTC+3':'ru' }}
+        <input type = "checkbox" [checked] = "item.isComlete" (change)="item.isComlete=!item.isComlete"/>
+    </li>
+</ul>
+<div *ngIf="dealsList.length > 0">
+    Количество дел: {{dealsList.length}}
+    <button (click)="deleteItem()">Удалить последнее</button>
+</div>
+
+
+<div *ngIf="selectedItem" class="details">
+    <h3>Подробности задачи</h3>
+    <p>
+        <label>Задача:
+            <input [value] = "selectedItem.title" placeholder = "name" #titleInput (change)="selectedItem.title=titleInput.value"/>
+        </label>
+    </p>
+    <p>
+        <label>Дата:
+            <input [value] = "selectedItem.startDate" placeholder = "startDate" #dateInput (change)="selectedItem.startDate=dateInput.value"/>
+        </label>
+    </p>
+    <p>
+        <label>Завершена:
+            <input type = "checkbox" [checked] = "selectedItem.isComlete" (change)="selectedItem.isComlete=!selectedItem.isComlete"/>
+        </label>
+    </p>
+</div>
+
+<p>Инструкция 
+<button (click)="info=!info" [style.backgroundColor]="info ?'#9c8':'#6a6'">{{ info ? 'Скрыть' : 'Показать' }}</button></p>
+<div *ngIf="info">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero recusandae nam, fugit harum impedit temporibus inventore, aliquid cupiditate consequuntur reprehenderit natus dolores numquam sunt veritatis quidem eveniet cum? Incidunt, voluptate! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non a recusandae maiores nisi quis libero aliquam ullam, labore in cum itaque facilis, eos earum cumque quae doloribus, reprehenderit quas adipisci.</p>
+</div>
+
+<button (click)="getItems()" >Получить все дела</button>
+
+<div [ngSwitch]="car">
+    <p *ngSwitchCase="'Audi'">This is Audi</p>
+    <p *ngSwitchCase="'BMW'">This is BMW</p>
+    <p *ngSwitchCase="'Mercedes'">This is Mercedes</p>
+    <p *ngSwitchDefault>Car is undefined</p>
+</div>
